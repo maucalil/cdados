@@ -1,7 +1,6 @@
-#Link Dados
-#https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5411053
+# Link Dados: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM5411053
 
-#pegando dados (fora do R)
+# Comando para reduzir os floats para 2 casas
 # cat GSE179175.csv | sed "s/\.[0-9][0-9]/&__/g" | sed "s/__[0-9]*e-/e-/g" | sed "s/__[0-9]*\t/\t/g" > GSE179175_small.csv
 
 import pandas as pd
