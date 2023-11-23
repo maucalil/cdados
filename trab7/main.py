@@ -10,10 +10,10 @@ from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
 
 # Leitura do arquivo CSV
-x = pd.read_csv("GSE179175_small.csv", delimiter="\t", header=0)
+data = pd.read_csv("GSE179175_small.csv", delimiter="\t", header=0)
 
 # Remoção da primeira coluna
-x = x.iloc[:, 1:]
+x = data.iloc[:, 1:]
 
 # Seleção das colunas que não tem dados faltantes
 x = x.iloc[:, list(range(0, 114, 2))]
@@ -32,7 +32,7 @@ for col in x.columns:
     x[col].replace({np.inf: max_val + 0.01, -np.inf: min_val - 0.01}, inplace=True)
 
 # Medir distâncias euclidianas entre as colunas (pacientes)
-D = pdist(x.T)
+D = pdist(x.T, metric='euclidean')
 D = squareform(D) # converte o vetor de distancias para matriz
 
 # Visualizar a matriz de distâncias
@@ -41,9 +41,9 @@ plt.colorbar(label='Distância Euclidiana')
 plt.show()
 
 # Árvore de cluster (hierarchical clustering)
-h = linkage(x.T, method='complete') # complete é o padrão no R
+h = linkage(x.T, method='complete', metric='euclidean')
 
-# Visualizar o dendrograma
+# Visualizar o dendrograma (arvore)
 dendrogram(h, labels=x.columns, distance_sort='descending') # os de maior distancia estão mais a esquerda
 plt.title('Dendrograma Hierárquico')
 plt.xlabel('Pacientes')
