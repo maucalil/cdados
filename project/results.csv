@@ -1,0 +1,5 @@
+Model,Avg Precision,Avg Recall,Avg F1 Score,Accuracy
+MLPClassifier,0.623504,0.644444,0.623028,0.644444
+QuadraticDiscriminantAnalysis,0.275641,0.288889,0.266733,0.288889
+LinearDiscriminantAnalysis,0.541604,0.577778,0.553381,0.577778
+SVC,0.503848,0.533333,0.514287,0.533333
