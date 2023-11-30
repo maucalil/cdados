@@ -20,7 +20,12 @@ def main():
     class_labels = y.unique()
 
     correlation_matrix = X.corr()
-    plot_correlation_matrix(correlation_matrix)
+    # Calcular as médias dos coeficientes para cada classe
+    class_means = normalized_data_df.groupby('class').mean()
+
+    # Calcular a matriz de correlação entre as classes
+    class_corr_matrix = class_means.T.corr()
+    plot_correlation_matrix(class_corr_matrix)
 
     # Create the models
     mlp = MLPClassifier(**get_mlp_parameters())
